@@ -169,7 +169,7 @@ const ProductList = () => {
 
 
     return (
-        <div className="bg-gray-100">
+        <div className="bg-white">
             <div>
                 {/* Mobile filter dialog */}
                 <Dialog open={mobileFiltersOpen} onClose={setMobileFiltersOpen} className="relative z-40 lg:hidden">
