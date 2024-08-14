@@ -1,12 +1,12 @@
 import "./App.css"
-import logo from "./logo.svg"
-import ProductList from "./features/product-list/ProductList";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import ProductDetail from "./features/product/components/ProductDetail";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "/checkout",
         element: <CheckoutPage/>
+    },
+    {
+        path: "/product-detail",
+        element: <ProductDetailPage/>
     }
 ]);
 
