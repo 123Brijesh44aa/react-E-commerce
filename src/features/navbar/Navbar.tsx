@@ -36,18 +36,18 @@ export default function Navbar({children}: { children: React.ReactNode }) {
                             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                 <div className="flex justify-between h-16">
                                     <div className="flex">
-                                        <div className="flex-shrink-0 flex items-center">
+                                        <Link to={"/"} className="flex-shrink-0 flex items-center">
                                             <img
                                                 className="block lg:hidden h-8 w-auto"
-                                                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                                                src="media/images/UrbanDukan.svg"
                                                 alt="Workflow"
                                             />
                                             <img
                                                 className="hidden lg:block h-8 w-auto"
-                                                src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-800-text.svg"
+                                                src="media/images/UrbanDukan.svg"
                                                 alt="Workflow"
                                             />
-                                        </div>
+                                        </Link>
                                         <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                             {navigation.map((item) => (
                                                 <a
