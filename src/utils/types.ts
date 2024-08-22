@@ -43,3 +43,27 @@ export interface Product {
 export interface FetchAllProductsResponse {
     data: Product[];
 }
+
+
+export interface SortOption{
+    name: string;
+    href: string;
+    current: boolean;
+}
+
+export interface FilterOption{
+    value: string;
+    label: string;
+    checked: boolean;
+}
+
+export interface Filter{
+    id: string;
+    name: string;
+    options: FilterOption[];
+}
+
+export interface FilterParams{
+    key: string;
+    value: string;
+}

@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {fetchAllProducts} from "./productApi";
-import {FetchAllProductsResponse, Product} from "../../utils/types";
+import {fetchAllProducts, fetchProductsByFilters} from "./productApi";
+import {FetchAllProductsResponse, FilterParams, Product} from "../../utils/types";
 import {WritableDraft} from "immer"
 
 interface productSliceType {
@@ -22,6 +22,15 @@ export const fetchAllProductsAsync = createAsyncThunk(
     }
 );
 
+export const fetchProductsByFilterAsync = createAsyncThunk(
+    "product/fetchProductsByFilters",
+    async (filter: FilterParams[]) => {
+        const response: FetchAllProductsResponse = await fetchProductsByFilters(filter);
+        // The value we return becomes the "fulfilled" action payload
+        return response.data
+    }
+);
+
 export const productSlice = createSlice({
     name: "product",
     initialState: initialState,
@@ -34,6 +43,13 @@ export const productSlice = createSlice({
                 state.status = "loading";
             })
             .addCase(fetchAllProductsAsync.fulfilled, (state:WritableDraft<productSliceType>, action) => {
+                state.status = "idle";
+                state.products = action.payload;
+            })
+            .addCase(fetchProductsByFilterAsync.pending, (state:WritableDraft<productSliceType>) => {
+                state.status = "loading";
+            })
+            .addCase(fetchProductsByFilterAsync.fulfilled, (state:WritableDraft<productSliceType>, action) => {
                 state.status = "idle";
                 state.products = action.payload;
             });
